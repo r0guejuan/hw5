@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Customs Desk</title>
+<style>
+  :root {
+    --bg: #0b0b0f;
+    --panel: #15151c;
+    --panel-2: #1d1d26;
+    --line: #2d2d3a;
+    --text: #f4f1f4;
+    --muted: #b5b0ba;
+    --pink: #ff4fa3;
+    --pink-soft: #ffb3d6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .page { max-width: 960px; margin: 0 auto; padding: 32px 16px 56px; }
+  header { margin-bottom: 24px; }
+  .eyebrow {
+    margin: 0 0 4px;
+    color: var(--pink);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  h1 { margin: 0; font-size: 32px; line-height: 1.2; }
+  h2 { margin: 0 0 4px; font-size: 24px; line-height: 1.25; }
+  h3 { margin: 0 0 12px; font-size: 17px; color: var(--pink-soft); }
+  p { margin: 0; }
+  .muted { color: var(--muted); }
+  [role="tablist"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  [role="tab"] {
+    min-height: 44px;
+    padding: 8px 18px;
+    color: var(--text);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  [role="tab"]:hover { border-color: var(--pink); }
+  [role="tab"][aria-selected="true"] { color: #16060e; background: var(--pink); border-color: var(--pink); }
+  :focus-visible { outline: 3px solid var(--pink-soft); outline-offset: 2px; }
+  .ticket-head { margin-bottom: 20px; }
+  .card {
+    margin-bottom: 16px;
+    padding: 20px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px 24px;
+    margin: 0;
+  }
+  dt { color: var(--muted); font-size: 13px; }
+  dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+  label { display: block; margin-bottom: 12px; }
+  label h3 { margin-bottom: 2px; }
+  .write { border: 2px solid var(--pink); }
+  textarea {
+    display: block;
+    width: 100%;
+    min-height: 200px;
+    padding: 14px;
+    color: #16060e;
+    background: #fff4f9;
+    border: 2px solid var(--pink);
+    border-radius: 8px;
+    font: inherit;
+    resize: vertical;
+    cursor: text;
+  }
+  textarea::placeholder { color: #66505c; opacity: 1; }
+  .coming { padding: 56px 20px; text-align: center; }
+  .cash { width: 100%; border-collapse: collapse; }
+  .cash th, .cash td { padding: 10px 8px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .cash th { color: var(--muted); font-size: 13px; }
+  .cash .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .cash .total td { font-weight: 700; }
+  .card { overflow-x: auto; }
+  .reflection p { margin-bottom: 14px; }
+  .reflection h3 { margin-top: 18px; }
+  .reflection ul { margin: 0; padding-left: 22px; }
+  .save-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 24px; }
+  .save-bar button {
+    min-height: 44px;
+    padding: 8px 18px;
+    color: #16060e;
+    background: var(--pink);
+    border: 0;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .save-bar p { flex: 1 1 280px; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <p class="eyebrow">Campus Customs</p>
+    <h1>Desk tickets</h1>
+    <p class="muted">Shop date: 2026-08-31 · Starting cash: $3,400 in checking</p>
+  </header>
+
+  <div role="tablist" aria-label="Desk pages">
+    <button role="tab" id="tab-101" aria-controls="panel-101" aria-selected="false" tabindex="-1">101</button>
+    <button role="tab" id="tab-102" aria-controls="panel-102" aria-selected="false" tabindex="-1">102</button>
+    <button role="tab" id="tab-103" aria-controls="panel-103" aria-selected="false" tabindex="-1">103</button>
+    <button role="tab" id="tab-cash" aria-controls="panel-cash" aria-selected="false" tabindex="-1">Cash</button>
+    <button role="tab" id="tab-reflection" aria-controls="panel-reflection" aria-selected="true" tabindex="0">Reflection</button>
+  </div>
+
+  <section role="tabpanel" id="panel-101" aria-labelledby="tab-101" tabindex="0" hidden="">
+    <div class="ticket-head">
+      <h2>Ticket 101: Bulldog tee</h2>
+      <p class="muted">Customer order from Tauhid Zaman</p>
+    </div>
+    <div class="card write">
+      <label for="expected-101">
+        <h3>Expected flow</h3>
+        <span class="muted">Type here in your own words</span>
+      </label>
+      <textarea id="expected-101" data-note="" placeholder="Click here and type the flow you expect for this ticket.">The boss agent is going to read the order and see that it's for a t-shirt purchase and task the Inventory agent. The Inventory agent is going to see that there's none in stock and lookup where it can reorder the tee from and how much it'll cost. Then the Inventory agent will reach out to Accounting agent to confirm if there are enough funds to restock the shirt and notify the Boss agent that the shirt is not available. The accounting agent is going to see an unpaid invoice with the vendor and prepare the invoice payment along with the restock order and send it to the boss agent. The Customer Service agent is going to draft the response to the customer letting them know that the shirt is not in stock.
+
+The Boss agent is going to review everything, set the ticket to waiting on approval, and let me know what needs my sign-off. I'll approve the invoice payment first because the vendor won't ship until it's paid, and then I'll approve the restock order. Once both are paid, the vendor can ship the shirt, which takes 5 days.
+
+MCP tools expected:
+- get_ticket (Boss)
+- check_product (Inventory)
+- check_vendors (Inventory)
+- check_cash (Accounting)
+- request_invoice_payment (Accounting)
+- request_purchase_order (Accounting)
+- save_draft (Customer Service)
+- update_ticket (Boss)
+- decide_request (me)
+- pay (me)</textarea>
+    </div>
+    <div class="card">
+      <h3>Starting data</h3>
+      <dl>
+        <div><dt>Request</dt><dd>Needs a tee in size S.</dd></div>
+        <div><dt>Item</dt><dd>1 × CC-TEE-WHITE, size S</dd></div>
+        <div><dt>In stock</dt><dd>0</dd></div>
+        <div><dt>Unit cost / list price</dt><dd>$8 / $28</dd></div>
+        <div><dt>Linked invoice</dt><dd>501: $840, due 2026-08-28, open</dd></div>
+        <div><dt>Invoice vendor</dt><dd>Bulldog Print Co, 5-day lead time</dd></div>
+      </dl>
+    </div>
+    <div class="card write">
+      <label for="actual-101">
+        <h3>Actual</h3>
+        <span class="muted">Type here after the agents run</span>
+      </label>
+      <textarea id="actual-101" data-note="" placeholder="Click here and type what actually happened on this ticket.">Agents that worked: Boss, Inventory, Accounting, Customer Service.
+
+What they delegated:
+- Boss asked Inventory to check stock and restock options.
+- Boss asked Accounting to check the invoice and cash and prepare payments.
+- Boss asked Customer Service to draft a message to Tauhid.
+
+What happened: Inventory found 0 in stock, 1 short, and matched Bulldog Print Co, which was blocked by invoice 501. Accounting prepared the $840 invoice payment and the $8 restock order. Customer Service saved draft 1. The Boss set the ticket to waiting on approval. I approved the invoice and then the restock, and the ticket resolved.
+
+MCP tools used:
+- Boss: get_ticket, list_open_tickets, update_ticket
+- Inventory: get_ticket, check_product, check_vendors
+- Accounting: get_ticket, check_cash, check_vendors, check_product, request_invoice_payment, request_purchase_order
+- Customer Service: get_ticket, save_draft
+- Me: decide_request, pay</textarea>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="panel-102" aria-labelledby="tab-102" tabindex="0" hidden="">
+    <div class="ticket-head">
+      <h2>Ticket 102: Rent due</h2>
+      <p class="muted">Rent notice from Elm City Properties</p>
+    </div>
+    <div class="card write">
+      <label for="expected-102">
+        <h3>Expected flow</h3>
+        <span class="muted">Type here in your own words</span>
+      </label>
+      <textarea id="expected-102" data-note="" placeholder="Click here and type the flow you expect for this ticket.">The boss agent is going to see that the rent is due and send it to the Facilities agent. The facilities agent is going to confirm the rent and send it to Accounting. Accounting is going to check that there's enough funds, and prepare the payment invoice. It will send it to the boss agent where they will ask me for approval.
+
+Once I approve it, the $2,400 comes out of checking, the payment gets recorded, and the next rent due date moves to October.
+
+MCP tools expected:
+- get_ticket (Boss)
+- check_rent (Facilities)
+- check_cash (Accounting)
+- request_rent_payment (Accounting)
+- update_ticket (Boss)
+- decide_request (me)
+- pay (me)</textarea>
+    </div>
+    <div class="card">
+      <h3>Starting data</h3>
+      <dl>
+        <div><dt>Request</dt><dd>Email: shop rent due in 2 days.</dd></div>
+        <div><dt>Linked lease</dt><dd>1: Chapel Street shop</dd></div>
+        <div><dt>Landlord</dt><dd>Elm City Properties</dd></div>
+        <div><dt>Monthly rent</dt><dd>$2,400</dd></div>
+        <div><dt>Next due</dt><dd>2026-09-02</dd></div>
+      </dl>
+    </div>
+    <div class="card write">
+      <label for="actual-102">
+        <h3>Actual</h3>
+        <span class="muted">Type here after the agents run</span>
+      </label>
+      <textarea id="actual-102" data-note="" placeholder="Click here and type what actually happened on this ticket.">Agents that worked: Boss, Facilities, Accounting, Customer Service.
+
+What they delegated:
+- Boss asked Facilities to verify the rent notice.
+- Facilities asked Accounting directly to prepare the rent payment.
+- Boss asked Accounting to confirm the payment request.
+- Boss asked Customer Service for a message.
+
+What happened: Facilities confirmed $2,400 due 2026-09-02 and that the notice matched the lease. Accounting prepared the rent payment. The save_draft tool refused Customer Service's draft for including internal business details, so no draft was saved. The Boss set the ticket to waiting on approval. I approved the rent, and the ticket resolved.
+
+MCP tools used:
+- Boss: get_ticket, update_ticket
+- Facilities: get_ticket, check_rent
+- Accounting: get_ticket, check_cash, check_rent, request_rent_payment
+- Customer Service: get_ticket, save_draft (refused)
+- Me: decide_request, pay</textarea>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="panel-103" aria-labelledby="tab-103" tabindex="0" hidden="">
+    <div class="ticket-head">
+      <h2>Ticket 103: Bulk hoodie discount</h2>
+      <p class="muted">Price override request from Yale AI Club</p>
+    </div>
+    <div class="card write">
+      <label for="expected-103">
+        <h3>Expected flow</h3>
+        <span class="muted">Type here in your own words</span>
+      </label>
+      <textarea id="expected-103" data-note="" placeholder="Click here and type the flow you expect for this ticket.">The boss agent is going to review the ticket and task the inventory agent to confirm that there are enough hoodies in stock. The inventory agent is going to check and see that there are only 8 in stock and notify the boss that they will need to order 12 more at $22 each, which is $264. Since the vendor isn't linked to the ticket, the inventory agent is going to suggest the vendor that makes the most sense and the boss will make the final call. The boss will check with accounting to ensure that there are enough funds in the account. Accounting is going to tell the boss that there isn't enough money and that only $152 is left after the invoice, the rent, and the tee restock, so the hoodie restock is $112 short. Accounting will also point out that the vendor can't ship until the invoice is paid.
+
+There's no discount policy in the database, so the boss can't approve the discount and will leave that decision to me. The Customer Service agent is going to draft a message to Yale AI Club saying 8 hoodies are available and the rest of the request is still being reviewed, without promising a discount. The boss will set the ticket to waiting on approval, and I'll decide what to do about the discount and the cash shortfall.
+
+MCP tools expected:
+- get_ticket (Boss)
+- list_open_tickets (Boss)
+- check_product (Inventory)
+- check_vendors (Inventory)
+- check_cash (Accounting)
+- save_draft (Customer Service)
+- update_ticket (Boss)</textarea>
+    </div>
+    <div class="card">
+      <h3>Starting data</h3>
+      <dl>
+        <div><dt>Request</dt><dd>Student org wants 20 hoodies, size M, asking for a bulk discount.</dd></div>
+        <div><dt>Item</dt><dd>20 × CC-HOOD-NAVY, size M</dd></div>
+        <div><dt>In stock</dt><dd>8</dd></div>
+        <div><dt>Unit cost / list price</dt><dd>$22 / $58</dd></div>
+        <div><dt>Linked vendor</dt><dd>None on the ticket</dd></div>
+        <div><dt>Discount policy</dt><dd>None in the database</dd></div>
+      </dl>
+    </div>
+    <div class="card write">
+      <label for="actual-103">
+        <h3>Actual</h3>
+        <span class="muted">Type here after the agents run</span>
+      </label>
+      <textarea id="actual-103" data-note="" placeholder="Click here and type what actually happened on this ticket.">Agents that worked: Boss, Inventory, Accounting, Customer Service.
+
+What they delegated:
+- Boss asked Inventory to check stock and restock options.
+- Boss asked Accounting to check cash and margins.
+- Boss asked Customer Service to draft a message to Yale AI Club.
+
+What happened: Inventory found 8 of 20 in stock, 12 short, and matched Bulldog Print Co on specialty. Accounting tried a $264 purchase order, and the tool refused it because only $152 was left, a $112 gap. Accounting also reported a $36 margin per hoodie. Customer Service saved draft 2 with no discount promised. The Boss set the ticket to waiting on approval. There was nothing to pay, so I marked it resolved.
+
+MCP tools used:
+- Boss: get_ticket, list_open_tickets, update_ticket
+- Inventory: get_ticket, check_product, check_vendors
+- Accounting: get_ticket, check_cash, check_product, check_vendors, request_purchase_order (refused)
+- Customer Service: get_ticket, save_draft</textarea>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="panel-cash" aria-labelledby="tab-cash" tabindex="0" hidden="">
+    <div class="ticket-head">
+      <h2>Cash</h2>
+      <p class="muted">Checking account, shop date 2026-08-31</p>
+    </div>
+    <div class="card">
+      <table class="cash">
+        <thead>
+          <tr><th scope="col">Step</th><th scope="col">Why</th><th scope="col" class="num">Change</th><th scope="col" class="num">Checking</th></tr>
+        </thead>
+        <tbody>
+          <tr class="total"><td>Starting balance</td><td>After the reset</td><td class="num"></td><td class="num">$3,400.00</td></tr>
+          <tr><td>Ticket 101</td><td>Paid invoice 501 to Bulldog Print Co</td><td class="num">−$840.00</td><td class="num">$2,560.00</td></tr>
+          <tr><td>Ticket 101</td><td>Purchase order: 1 CC-TEE-WHITE, size S</td><td class="num">−$8.00</td><td class="num">$2,552.00</td></tr>
+          <tr><td>Ticket 102</td><td>Paid rent to Elm City Properties for lease 1</td><td class="num">−$2,400.00</td><td class="num">$152.00</td></tr>
+          <tr><td>Ticket 103</td><td>No payment. The $264 hoodie restock was refused, $112 over available cash</td><td class="num">$0.00</td><td class="num">$152.00</td></tr>
+          <tr class="total"><td>Ending balance</td><td>Matches cash_accounts in campus_customs_new.db</td><td class="num">−$3,248.00</td><td class="num">$152.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="panel-reflection" aria-labelledby="tab-reflection" tabindex="0">
+    <div class="ticket-head">
+      <h2>Reflection</h2>
+    </div>
+    <div class="card reflection">
+      <p>I would say that the agents performed well on each ticket. They appropriately identified all issues, escalated, and didn't do anything without approval. The Guardrails and audit trail pane I added to the dashboard made it easy to verify that nothing dangerous was performed, and also what each agent refused.</p>
+      <p>There were a couple surprises in the Actual vs Expected plan I wrote. I expected the agents to communicate more with each other, but instead the boss agent delegated individual tasks to each agent, and there wasn't much inter-agent communication.</p>
+      <p>If this was one agent vs a team, it could have been simpler because the single agent would have just made each call to the individual tools vs. tasking an agent to do it.</p>
+      <h3>Three new problems the Campus Customs team might face that the agent team could solve:</h3>
+      <ul>
+        <li>Automatic restocking recommendations when inventory is low or gone</li>
+        <li>Customers exchanging merchandise for a different size</li>
+        <li>Refund requests (should default to human approval)</li>
+      </ul>
+      <h3>Three new problems the team could not solve:</h3>
+      <ul>
+        <li>Customers merchandise returns (would need to add new tools such as restocking)</li>
+        <li>Fake/scam requests ( would need to add a risk agent with tools such as verify_sender, or check_bank_change, or flag_suspicious_requests).</li>
+        <li>Discount requests (this could be solved with a pricing agent that dynamically prices based on specific margin rules)</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="save-bar">
+    <button type="button" id="save-copy">Download page with my notes</button>
+    <p class="muted" id="save-status" role="status">Your notes save in this browser as you type. To keep them in the file, download the page and replace output/desk_tickets.html with it.</p>
+  </div>
+</div>
+
+<script>
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const notes = [...document.querySelectorAll("[data-note]")];
+
+  function showTab(tab, focus) {
+    tabs.forEach((item) => {
+      const selected = item === tab;
+      item.setAttribute("aria-selected", selected);
+      item.tabIndex = selected ? 0 : -1;
+      document.getElementById(item.getAttribute("aria-controls")).hidden = !selected;
+    });
+    if (focus) tab.focus();
+    try {
+      history.replaceState(null, "", "#" + tab.id.replace("tab-", ""));
+    } catch {}
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => showTab(tab));
+    tab.addEventListener("keydown", (event) => {
+      const moves = { ArrowRight: index + 1, ArrowLeft: index - 1, Home: 0, End: tabs.length - 1 };
+      if (!(event.key in moves)) return;
+      event.preventDefault();
+      showTab(tabs[(moves[event.key] + tabs.length) % tabs.length], true);
+    });
+  });
+
+  const opened = document.getElementById("tab-" + location.hash.slice(1));
+  if (opened && tabs.includes(opened)) showTab(opened);
+
+  notes.forEach((note) => {
+    try {
+      const saved = localStorage.getItem("campus-desk-final:" + note.id);
+      if (saved !== null) note.value = saved;
+    } catch {}
+    note.addEventListener("input", () => {
+      try {
+        localStorage.setItem("campus-desk-final:" + note.id, note.value);
+      } catch {}
+    });
+  });
+
+  document.getElementById("save-copy").addEventListener("click", () => {
+    notes.forEach((note) => { note.textContent = note.value; });
+    const html = "<!doctype html>\n" + document.documentElement.outerHTML;
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+    link.download = "desk_tickets.html";
+    link.click();
+    URL.revokeObjectURL(link.href);
+    document.getElementById("save-status").textContent =
+      "Downloaded. Replace output/desk_tickets.html with the new file to keep your notes.";
+  });
+</script>
+
+
+</body></html>

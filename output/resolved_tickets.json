@@ -1,0 +1,79 @@
+{
+  "tickets": [
+    {
+      "id": 101,
+      "final_status": "resolved",
+      "outcome": "Tee was out of stock. Invoice 501 and a 1-unit restock were approved and paid, which unblocked Bulldog Print Co.",
+      "agents": {
+        "boss": "Read the ticket, brought in the team, and set it to waiting on approval.",
+        "inventory": "Found 0 in stock, 1 short, and matched Bulldog Print Co, blocked by invoice 501.",
+        "accounting": "Prepared the $840 invoice payment and the $8 purchase order.",
+        "customer_service": "Saved draft 1 to Tauhid Zaman with no delivery date promised."
+      },
+      "human_approvals": [
+        {
+          "request_id": 1,
+          "payment_id": 1,
+          "kind": "invoice",
+          "amount": 840.0,
+          "decision": "approved",
+          "approved_by": "Obi Juan",
+          "paid_at": "2026-08-31"
+        },
+        {
+          "request_id": 2,
+          "payment_id": 2,
+          "kind": "purchase_order",
+          "amount": 8.0,
+          "decision": "approved",
+          "approved_by": "Obi Juan",
+          "paid_at": "2026-08-31"
+        }
+      ],
+      "models_used": [
+        "gpt-6-luna-2026-09-22"
+      ]
+    },
+    {
+      "id": 102,
+      "final_status": "resolved",
+      "outcome": "Rent notice matched the lease. The $2,400 rent was approved and paid, and the next due date moved to 2026-10-02.",
+      "agents": {
+        "boss": "Sent the notice to Facilities, confirmed the request with Accounting, and set it to waiting on approval.",
+        "facilities": "Confirmed lease 1 and asked Accounting directly to prepare the rent.",
+        "accounting": "Prepared the $2,400 rent payment and confirmed it was pending.",
+        "customer_service": "Draft was refused by save_draft for internal details, so none was saved."
+      },
+      "human_approvals": [
+        {
+          "request_id": 3,
+          "payment_id": 3,
+          "kind": "rent",
+          "amount": 2400.0,
+          "decision": "approved",
+          "approved_by": "Obi Juan",
+          "paid_at": "2026-08-31"
+        }
+      ],
+      "models_used": [
+        "gpt-6-luna-2026-09-22"
+      ]
+    },
+    {
+      "id": 103,
+      "final_status": "resolved",
+      "outcome": "8 of 20 hoodies were in stock. The $264 restock was refused with $152 available, no discount was set, and no money moved.",
+      "agents": {
+        "boss": "Brought in the team, left the discount and cash gap for a person, and set it to waiting on approval.",
+        "inventory": "Found 8 in stock, 12 short, and matched Bulldog Print Co on specialty.",
+        "accounting": "Tried the $264 purchase order, which was refused, and reported the $112 gap and $36 margin.",
+        "customer_service": "Saved draft 2 to Yale AI Club with no discount promised."
+      },
+      "human_approvals": [],
+      "resolved_by": "Obi Juan",
+      "models_used": [
+        "gpt-6-luna-2026-09-22"
+      ]
+    }
+  ]
+}
