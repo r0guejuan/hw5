@@ -171,3 +171,15 @@
 > * Customers merchandise returns (would need to add new tools such as restocking)
 > * Fake/scam requests ( would need to add a risk agent with tools such as verify_sender, or check_bank_change, or flag_suspicious_requests).
 > * Discount requests (this could be solved with a pricing agent that dynamically prices based on specific margin rules)
+
+# Problem 11: Submit to Github
+
+## Prompt 1
+
+> Problem 11: Submit to Github. Push my code to a public GitHub repo so that my graders can clone it. Make sure everything is safe to push (like don't dox me, expose my secrets, include my hostname, etc.) to the github repo, and do not include the database files under data/.
+>
+> The layout should look like this (screenshot).
+>
+> README should explain: copy original database to the working copy when you need a clean run, start MCP server, start FastAPI backend, start react board, reset the database before a full three-ticket run.
+>
+> *(attached: screenshot of the assignment's expected file tree for hw5/)*
